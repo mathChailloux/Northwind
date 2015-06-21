@@ -7,16 +7,23 @@
 		<script src="resources/sap-ui-core.js"
 				id="sap-ui-bootstrap"
 				data-sap-ui-libs="sap.m"
-				data-sap-ui-theme="sap_bluecrystal">
+				data-sap-ui-xx-bindingSyntax="complex"
+				data-sap-ui-theme="sap_bluecrystal"
+				data-sap-ui-resourceroots='{ "sap.ui.demo.northwind": "./" }'>
 		</script>
-		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
 
 		<script>
-			
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height: "100%",
+						name: "sap.ui.demo.northwind"
+					})
+				}).placeAt("content");
+			});
 		</script>
 
 	</head>
-	<body class="sapUiBody" role="application">
-		<div id="content"></div>
+	<body class="sapUiBody" id="content">
 	</body>
 </html>
